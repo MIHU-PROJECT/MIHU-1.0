@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MIHU" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="fontFamily">@font/mulish</item>
+    </style>
+
+    <style name="Theme.MIHU" parent="Base.Theme.MIHU" />
+
+    <style name="Theme.MIHU.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MIHU.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MIHU.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="OnBoardingDescBG">
+        <item name="android:layout_height">435dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@drawable/onboarding_desc_bg</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:padding">30dp</item>
+    </style>
+</resources>
