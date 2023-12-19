@@ -6,6 +6,8 @@ import androidx.lifecycle.liveData
 import com.example.mihu.data.Result
 import com.example.mihu.data.local.pref.UserPreferences
 import com.example.mihu.data.model.UserModel
+import com.example.mihu.data.remote.response.user.HistoryResponse
+import com.example.mihu.data.remote.response.worker.JobWorkerResponse
 import com.example.mihu.data.remote.response.worker.LoginWorkerResponse
 import com.example.mihu.data.remote.retrofit.ApiService
 
@@ -43,6 +45,26 @@ class WorkerRepository(
             }
         }
 
+    fun getOrder(
+        token: String
+    ): LiveData<Result<JobWorkerResponse>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiService.getOrder(token)
+                if (response.error) {
+                    emit(Result.Error("Categories Error: ${response.message}"))
+                    Log.d("Categories Error", response.message)
+                } else {
+                    emit(Result.Success(response))
+                    Log.d("Categories Success", response.message)
+                }
+            } catch (e: Exception) {
+                emit(Result.Error("Error : ${e.message.toString()}"))
+                Log.d("Categories Exception", e.message.toString())
+            }
+        }
+
     fun loginWorker(
         email: String,
         password: String
@@ -62,6 +84,7 @@ class WorkerRepository(
                     pref.saveSession(
                         UserModel(
                             response.data.userId,
+                            response.data.username,
                             response.data.email,
                             response.data.accessToken,
                             true

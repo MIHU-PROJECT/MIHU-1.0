@@ -1,35 +1,67 @@
 package com.example.mihu.ui.worker.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.mihu.R
+import com.example.mihu.databinding.FragmentProfileBinding
+import com.example.mihu.ui.ViewModelFactory
+import com.example.mihu.ui.login.LoginActivity
+import com.example.mihu.ui.profile.ProfileViewModel
+import com.example.mihu.ui.worker.login.LoginWorkerActivity
+import kotlinx.coroutines.launch
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileWorkerFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileWorkerFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
+    private lateinit var binding: FragmentProfileBinding
+    private val viewModel by viewModels<ProfileViewModel> {
+        ViewModelFactory.getInstance(requireActivity())
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_worker, container, false)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize views and set up any additional logic here
+        setupProfileInfo()
+        setupClickListeners()
+    }
+
+    private fun setupProfileInfo() {
+        binding.ivPhoto.setImageResource(R.drawable.ic_pp_default)
+        viewModel.email.observe(viewLifecycleOwner) {
+            binding.tvEmail.text = it
+        }
+
+        viewModel.name.observe(viewLifecycleOwner) {
+            binding.tvName.text = it
+        }
+    }
+
+    private fun setupClickListeners() {
+        // Set up click listeners for profile actions (e.g., log out)
+        binding.tvLogOut.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.logout()
+            }
+            startActivity(Intent(requireContext(), LoginWorkerActivity::class.java))
+            requireActivity().finish()
+        }
+
+        // Add click listeners for other actions if needed
+        // ...
+    }
 }

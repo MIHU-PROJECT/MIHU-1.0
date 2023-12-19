@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.mihu.R
 import com.example.mihu.databinding.ActivityHomeBinding
 import com.example.mihu.ui.ViewModelFactory
-import com.example.mihu.ui.order.OrderFragment
+import com.example.mihu.ui.history.HistoryFragment
 import com.example.mihu.ui.profile.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
@@ -24,34 +24,22 @@ class HomeActivity : AppCompatActivity() {
         replaceFragment(HomeFragment())
 
         binding.bottomNavigation.setOnItemSelectedListener {
-
             when (it.itemId) {
-
                 R.id.nav_home -> replaceFragment(HomeFragment())
-                R.id.nav_order -> replaceFragment(OrderFragment())
+                R.id.nav_history -> replaceFragment(HistoryFragment())
                 R.id.nav_profile -> replaceFragment(ProfileFragment())
-
                 else -> {
-
-
+                    // Do something if needed
                 }
-
             }
-
             true
-
         }
-
-
     }
 
     private fun replaceFragment(fragment: Fragment) {
-
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
-
-
     }
 }

@@ -7,6 +7,7 @@ import com.example.mihu.data.Result
 import com.example.mihu.data.local.pref.UserPreferences
 import com.example.mihu.data.model.UserModel
 import com.example.mihu.data.remote.response.user.CategoriesResponse
+import com.example.mihu.data.remote.response.user.HistoryResponse
 import com.example.mihu.data.remote.response.user.LoginResponse
 import com.example.mihu.data.remote.retrofit.ApiService
 
@@ -39,6 +40,51 @@ class MihuRepository(
     suspend fun logout() {
         pref.logout()
     }
+
+    fun getHistory(
+        token: String
+    ): LiveData<Result<HistoryResponse>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiService.getHistory(token)
+                if (response.error) {
+                    emit(Result.Error("Categories Error: ${response.message}"))
+                    Log.d("Categories Error", response.message)
+                } else {
+                    emit(Result.Success(response))
+                    Log.d("Categories Success", response.message)
+                }
+            } catch (e: Exception) {
+                emit(Result.Error("Error : ${e.message.toString()}"))
+                Log.d("Categories Exception", e.message.toString())
+            }
+        }
+
+    fun postOrder(
+        token: String,
+        name: String,
+        description: String,
+        categoryId: String,
+        price: Number,
+    ): LiveData<Result<String>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response =
+                    apiService.postOrder(token, name, description, categoryId, price)
+                if (response.error) {
+                    emit(Result.Error("Post Order Error: ${response.message}"))
+                    Log.d("Post Order Error", response.message)
+                } else {
+                    emit(Result.Success("User Created"))
+                    Log.d("Post Order Success", response.message)
+                }
+            } catch (e: Exception) {
+                emit(Result.Error("Error : ${e.message.toString()}"))
+                Log.d("Post Order Exception", e.message.toString())
+            }
+        }
 
     fun registerUser(
         name: String,
@@ -81,6 +127,7 @@ class MihuRepository(
                     pref.saveSession(
                         UserModel(
                             response.data.userId,
+                            response.data.username,
                             response.data.email,
                             response.data.accessToken,
                             true

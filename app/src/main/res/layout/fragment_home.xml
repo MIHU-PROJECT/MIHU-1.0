@@ -52,6 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_akun"
         android:layout_width="match_parent"

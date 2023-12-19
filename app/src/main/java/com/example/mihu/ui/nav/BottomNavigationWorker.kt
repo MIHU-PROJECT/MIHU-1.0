@@ -27,7 +27,7 @@ class BottomNavigationWorker : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_task, R.id.nav_history, R.id.nav_profile
+                R.id.nav_task, R.id.nav_history_worker, R.id.nav_profile
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

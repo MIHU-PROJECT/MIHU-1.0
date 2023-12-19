@@ -12,6 +12,7 @@ import com.example.mihu.R
 import com.example.mihu.databinding.FragmentProfileBinding
 import com.example.mihu.ui.ViewModelFactory
 import com.example.mihu.ui.login.LoginActivity
+import com.example.mihu.utils.loadImage
 import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
@@ -39,11 +40,14 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupProfileInfo() {
-        // You can set the profile information here (e.g., load user data, photo, etc.)
-        // Example:
-        binding.ivPhoto.setImageResource(R.drawable.ic_toolsimg)
-        binding.tvEmail.text = "user@example.com"
-        binding.tvName.text = "Developer Gacor"
+        binding.ivPhoto.setImageResource(R.drawable.ic_pp_default)
+        viewModel.email.observe(viewLifecycleOwner) {
+            binding.tvEmail.text = it
+        }
+
+        viewModel.name.observe(viewLifecycleOwner) {
+            binding.tvName.text = it
+        }
     }
 
     private fun setupClickListeners() {

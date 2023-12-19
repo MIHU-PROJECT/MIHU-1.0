@@ -30,7 +30,7 @@ class HomeWorkerActivity : AppCompatActivity() {
             when (it.itemId) {
 
                 R.id.nav_task -> replaceFragment(TaskFragment())
-                R.id.nav_history -> replaceFragment(HistoryWorkerFragment())
+                R.id.nav_history_worker -> replaceFragment(HistoryWorkerFragment())
                 R.id.nav_profile -> replaceFragment(ProfileFragment())
 
                 else -> {

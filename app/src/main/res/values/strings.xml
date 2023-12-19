@@ -106,4 +106,15 @@
     <string name="loginuser1">Log In As User</string>
     <string name="notauser">Not A User?</string>
     <string name="LoginAsWorker">Login As Worker</string>
+    <string name="history">History</string>
+    <string name="tab_text_1">Scheduled</string>
+    <string name="tab_text_2">Completed</string>
+    <string name="your_order_submitted">Your order has been submitted</string>
+    <string name="please_wait_for">" Please wait for worker take a job"</string>
+    <string name="price">Price</string>
+    <string name="tab_completed">Completed</string>
+    <string name="tab_ongoing">Ongoing</string>
+    <string name="avatar">Avatar</string>
+    <string name="status">Status</string>
+    <string name="price_format">Rp. %d</string>
 </resources>

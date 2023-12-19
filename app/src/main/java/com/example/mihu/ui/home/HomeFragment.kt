@@ -12,19 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mihu.data.Result
 import com.example.mihu.databinding.FragmentHomeBinding
 import com.example.mihu.ui.ViewModelFactory
-import com.example.mihu.ui.adapter.JobAdapter
+import com.example.mihu.ui.adapter.CategoriesAdapter
 import com.example.mihu.ui.login.LoginActivity
 
 
 class HomeFragment : Fragment() {
-
+    private lateinit var adapter: CategoriesAdapter
     private lateinit var binding: FragmentHomeBinding
     private val homeViewModel: HomeViewModel by viewModels {
         ViewModelFactory.getInstance(requireContext())
     }
-    private val adapter by lazy {
-        JobAdapter(dataset = emptyList())
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,25 +35,26 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter = CategoriesAdapter()
         homeViewModel.getSessionData().observe(viewLifecycleOwner) { user ->
             if (!user.isLogin) {
                 val intent = Intent(requireContext(), LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             } else {
-                homeViewModel.getCategories()
+                loadCategories()
             }
         }
-        loadCategories()
     }
 
     private fun loadCategories() {
-        homeViewModel.categories.observe(viewLifecycleOwner) { result ->
+        homeViewModel.getCategories().observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Loading -> showLoading(true)
                 is Result.Success -> {
                     showLoading(false)
                     val layoutManager = LinearLayoutManager(requireContext())
+                    adapter.submitList(result.data.categories)
                     binding.rvAkun.layoutManager = layoutManager
                     binding.rvAkun.adapter = adapter
                 }

@@ -18,7 +18,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="10dp"
         android:contentDescription="@string/cd_onboarding_1"
-        android:src="@drawable/ic_toolsimg" />
+        android:src="@drawable/ic_done_3d" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"

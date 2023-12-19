@@ -20,7 +20,7 @@
         android:layout_marginBottom="10dp"
         android:contentDescription="@string/cd_onboarding_2"
         android:layout_gravity="center"
-        android:src="@drawable/ic_toolsimg" />
+        android:src="@drawable/ic_search_3d" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"
