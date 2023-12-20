@@ -49,15 +49,15 @@ class WorkerRepository(
             try {
                 val response = apiService.getOrder(token)
                 if (response.error) {
-                    emit(Result.Error("Categories Error: ${response.message}"))
-                    Log.d("Categories Error", response.message)
+                    emit(Result.Error("Get Order Error: ${response.message}"))
+                    Log.d("Get Order Error", response.message)
                 } else {
                     emit(Result.Success(response))
-                    Log.d("Categories Success", response.message)
+                    Log.d("Get Order Success", response.message)
                 }
             } catch (e: Exception) {
                 emit(Result.Error("Error : ${e.message.toString()}"))
-                Log.d("Categories Exception", e.message.toString())
+                Log.d("Get Order Exception", e.message.toString())
             }
         }
 
@@ -69,15 +69,15 @@ class WorkerRepository(
             try {
                 val response = apiService.getHistoryWorker(token)
                 if (response.error) {
-                    emit(Result.Error("Categories Error: ${response.message}"))
-                    Log.d("Categories Error", response.message)
+                    emit(Result.Error("Get History Worker Error: ${response.message}"))
+                    Log.d("Get History Worker Error", response.message)
                 } else {
                     emit(Result.Success(response))
-                    Log.d("Categories Success", response.message)
+                    Log.d("Get History Worker Success", response.message)
                 }
             } catch (e: Exception) {
                 emit(Result.Error("Error : ${e.message.toString()}"))
-                Log.d("Categories Exception", e.message.toString())
+                Log.d("Get History Worker Exception", e.message.toString())
             }
         }
 
@@ -91,15 +91,15 @@ class WorkerRepository(
                 val response =
                     apiService.takeJob(token, id)
                 if (response.error) {
-                    emit(Result.Error("Post Order Error: ${response.message}"))
-                    Log.d("Post Order Error", response.message)
+                    emit(Result.Error("Take Job Error: ${response.message}"))
+                    Log.d("Take Job Error", response.message)
                 } else {
                     emit(Result.Success("User Created"))
-                    Log.d("Post Order Success", response.message)
+                    Log.d("Take Job Success", response.message)
                 }
             } catch (e: Exception) {
                 emit(Result.Error("Error : ${e.message.toString()}"))
-                Log.d("Post Order Exception", e.message.toString())
+                Log.d("Take Job Exception", e.message.toString())
             }
         }
 

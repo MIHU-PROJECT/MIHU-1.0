@@ -10,14 +10,14 @@ import androidx.core.util.Pair
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mihu.data.remote.response.user.SearchItems
+import com.example.mihu.data.remote.response.user.Prediction
 import com.example.mihu.databinding.ItemServicesBinding
 import com.example.mihu.ui.order.OrderActivity
 import com.example.mihu.utils.loadImage
 
 
 class SearchAdapter :
-    ListAdapter<SearchItems, SearchAdapter.JobViewHolder>(SearchPredict()) {
+    ListAdapter<Prediction, SearchAdapter.JobViewHolder>(SearchPredict()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
         val binding =
@@ -31,7 +31,7 @@ class SearchAdapter :
 
     class JobViewHolder(private val binding: ItemServicesBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: SearchItems) {
+        fun bind(data: Prediction) {
             binding.apply {
                 tvItemName.text = data.name
                 ivAvatar.loadImage(itemView.context, data.categoriesImage)
@@ -55,17 +55,17 @@ class SearchAdapter :
         }
     }
 
-    class SearchPredict : DiffUtil.ItemCallback<SearchItems>() {
+    class SearchPredict : DiffUtil.ItemCallback<Prediction>() {
         override fun areItemsTheSame(
-            oldItem: SearchItems,
-            newItem: SearchItems
+            oldItem: Prediction,
+            newItem: Prediction
         ): Boolean {
             return oldItem === newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: SearchItems,
-            newItem: SearchItems
+            oldItem: Prediction,
+            newItem: Prediction
         ): Boolean {
             return oldItem._id == newItem._id
         }

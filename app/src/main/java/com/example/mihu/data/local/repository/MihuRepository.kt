@@ -9,6 +9,7 @@ import com.example.mihu.data.model.UserModel
 import com.example.mihu.data.remote.response.user.CategoriesResponse
 import com.example.mihu.data.remote.response.user.HistoryResponse
 import com.example.mihu.data.remote.response.user.LoginResponse
+import com.example.mihu.data.remote.response.user.PredictionsResponse
 import com.example.mihu.data.remote.retrofit.ApiService
 
 class MihuRepository(
@@ -45,15 +46,15 @@ class MihuRepository(
                 val response =
                     apiService.completeJob(token, id)
                 if (response.error) {
-                    emit(Result.Error("Post Order Error: ${response.message}"))
-                    Log.d("Post Order Error", response.message)
+                    emit(Result.Error("Complete Job Error: ${response.message}"))
+                    Log.d("Complete Job Error", response.message)
                 } else {
                     emit(Result.Success("User Created"))
-                    Log.d("Post Order Success", response.message)
+                    Log.d("Complete Job Success", response.message)
                 }
             } catch (e: Exception) {
                 emit(Result.Error("Error : ${e.message.toString()}"))
-                Log.d("Post Order Exception", e.message.toString())
+                Log.d("Complete Job Exception", e.message.toString())
             }
         }
 
@@ -63,13 +64,13 @@ class MihuRepository(
         pref.logout()
     }
 
-    fun getHistory(
-        token: String
-    ): LiveData<Result<HistoryResponse>> =
+    fun predictCategory(
+        sentencecs: String
+    ): LiveData<Result<PredictionsResponse>> =
         liveData {
             emit(Result.Loading)
             try {
-                val response = apiService.getHistory(token)
+                val response = apiService.predictCategory(sentencecs)
                 if (response.error) {
                     emit(Result.Error("Categories Error: ${response.message}"))
                     Log.d("Categories Error", response.message)
@@ -80,6 +81,26 @@ class MihuRepository(
             } catch (e: Exception) {
                 emit(Result.Error("Error : ${e.message.toString()}"))
                 Log.d("Categories Exception", e.message.toString())
+            }
+        }
+
+    fun getHistory(
+        token: String
+    ): LiveData<Result<HistoryResponse>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiService.getHistory(token)
+                if (response.error) {
+                    emit(Result.Error("Get History Error: ${response.message}"))
+                    Log.d("Get History Error", response.message)
+                } else {
+                    emit(Result.Success(response))
+                    Log.d("Get History Success", response.message)
+                }
+            } catch (e: Exception) {
+                emit(Result.Error("Error : ${e.message.toString()}"))
+                Log.d("Get History Exception", e.message.toString())
             }
         }
 

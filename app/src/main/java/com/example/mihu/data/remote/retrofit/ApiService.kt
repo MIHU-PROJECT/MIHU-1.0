@@ -1,20 +1,17 @@
 package com.example.mihu.data.remote.retrofit
 
 import com.example.mihu.data.remote.response.user.CategoriesResponse
+import com.example.mihu.data.remote.response.user.CompleteJobResponse
 import com.example.mihu.data.remote.response.user.HistoryResponse
 import com.example.mihu.data.remote.response.user.JobResponse
 import com.example.mihu.data.remote.response.user.LoginResponse
-import com.example.mihu.data.remote.response.user.RegisterResponse
-import com.example.mihu.data.remote.response.user.SearchResponse
-import com.example.mihu.data.remote.response.user.UserResponse
-import com.example.mihu.data.remote.response.user.CompleteJobResponse
 import com.example.mihu.data.remote.response.user.PredictionsResponse
+import com.example.mihu.data.remote.response.user.RegisterResponse
 import com.example.mihu.data.remote.response.worker.HistoryWorkerResponse
 import com.example.mihu.data.remote.response.worker.JobWorkerResponse
 import com.example.mihu.data.remote.response.worker.LoginWorkerResponse
 import com.example.mihu.data.remote.response.worker.RegisterWorkerResponse
 import com.example.mihu.data.remote.response.worker.TakeJobResponse
-import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -60,12 +57,6 @@ interface ApiService {
     @GET("categories")
     suspend fun getCategories(): CategoriesResponse
 
-    @GET("check-auth")
-    suspend fun getUser(
-        @Header("Authorization") token: String? = null
-    ): UserResponse
-
-
     @FormUrlEncoded
     @POST("recruiter/job")
     suspend fun postOrder(
@@ -87,12 +78,6 @@ interface ApiService {
         @Header("Authorization") token: String? = null,
     ): HistoryResponse
 
-    @POST("predict")
-    suspend fun searchPredict(
-        @Header("Authorization") token: String? = null,
-        @Field("sentences") sentences: String
-    ): SearchResponse
-
     @POST("worker/job/{id}")
     suspend fun takeJob(
         @Header("Authorization") token: String? = null,
@@ -112,6 +97,8 @@ interface ApiService {
     ): HistoryWorkerResponse
 
     @GET("/predict")
-    fun predictCategory(@Query("sentences") sentences: String): Call<PredictionsResponse>
+    suspend fun predictCategory(
+        @Query("sentences") sentences: String
+    ): PredictionsResponse
 
 }

@@ -20,7 +20,7 @@ class HomeViewModel(
     fun getCategories() =
         mMihuRepository.getCategories()
 
-//    fun searchPredict(token: String, sentences: String) =
-//        mMihuRepository.searchPredict(token, sentences)
+    fun predictCategory(sentences: String) =
+        mMihuRepository.predictCategory(sentences)
 
 }

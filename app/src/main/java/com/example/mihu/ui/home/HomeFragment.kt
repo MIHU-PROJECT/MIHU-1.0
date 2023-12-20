@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -48,26 +47,22 @@ class HomeFragment : Fragment() {
             }
         }
 
-        homeViewModel.token.observe(viewLifecycleOwner) { token ->
+        homeViewModel.token.observe(viewLifecycleOwner) {
             with(binding) {
                 rvAkun.apply {
                     layoutManager = LinearLayoutManager(requireContext())
                     adapter = searchAdapter
                 }
-//                searchView
-//                    .editText
-//                    .setOnEditorActionListener { _, actionId, _ ->
-//                        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-//                            searchView.hide()
-//                            homeViewModel.searchPredict(token, searchView.text.toString())
-//                            true
-//                        } else {
-//                            false
-//                        }
-//                    }
-
             }
         }
+//        with(binding) {
+//            searchView.setupWithSearchBar(searchBar)
+//            searchView.editText.setOnEditorActionListener { _, _, _ ->
+//                homeViewModel.predictCategory(searchView.text.toString())
+//                searchBar.text = searchView.text
+//                searchView.text.isEmpty()
+//            }
+//        }
 
     }
 
