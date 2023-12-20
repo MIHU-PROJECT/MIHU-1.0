@@ -12,7 +12,7 @@ import com.example.mihu.data.Result
 import com.example.mihu.data.remote.response.worker.Job
 import com.example.mihu.databinding.FragmentTaskBinding
 import com.example.mihu.ui.ViewModelFactory
-import com.example.mihu.ui.adapter.JobAdapter
+import com.example.mihu.ui.worker.adapter.JobAdapter
 
 
 class TaskFragment : Fragment() {

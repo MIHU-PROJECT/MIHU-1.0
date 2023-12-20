@@ -5,15 +5,24 @@ import com.example.mihu.data.remote.response.user.HistoryResponse
 import com.example.mihu.data.remote.response.user.JobResponse
 import com.example.mihu.data.remote.response.user.LoginResponse
 import com.example.mihu.data.remote.response.user.RegisterResponse
+import com.example.mihu.data.remote.response.user.SearchResponse
 import com.example.mihu.data.remote.response.user.UserResponse
+import com.example.mihu.data.remote.response.user.CompleteJobResponse
+import com.example.mihu.data.remote.response.user.PredictionsResponse
+import com.example.mihu.data.remote.response.worker.HistoryWorkerResponse
 import com.example.mihu.data.remote.response.worker.JobWorkerResponse
 import com.example.mihu.data.remote.response.worker.LoginWorkerResponse
 import com.example.mihu.data.remote.response.worker.RegisterWorkerResponse
+import com.example.mihu.data.remote.response.worker.TakeJobResponse
+import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -77,4 +86,32 @@ interface ApiService {
     suspend fun getHistory(
         @Header("Authorization") token: String? = null,
     ): HistoryResponse
+
+    @POST("predict")
+    suspend fun searchPredict(
+        @Header("Authorization") token: String? = null,
+        @Field("sentences") sentences: String
+    ): SearchResponse
+
+    @POST("worker/job/{id}")
+    suspend fun takeJob(
+        @Header("Authorization") token: String? = null,
+        @Path("id") jobId: String,
+
+        ): TakeJobResponse
+
+    @PATCH("recruiter/order/{id}")
+    suspend fun completeJob(
+        @Header("Authorization") token: String? = null,
+        @Path("id") jobId: String,
+    ): CompleteJobResponse
+
+    @GET("worker/order")
+    suspend fun getHistoryWorker(
+        @Header("Authorization") token: String? = null,
+    ): HistoryWorkerResponse
+
+    @GET("/predict")
+    fun predictCategory(@Query("sentences") sentences: String): Call<PredictionsResponse>
+
 }

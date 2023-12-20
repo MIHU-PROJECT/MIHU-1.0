@@ -1,4 +1,4 @@
-package com.example.mihu.ui.adapter
+package com.example.mihu.ui.worker.adapter
 
 import android.app.Activity
 import android.content.Intent
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mihu.R
 import com.example.mihu.data.remote.response.worker.Job
 import com.example.mihu.databinding.ItemWorkerBinding
-import com.example.mihu.ui.order.OrderActivity
+import com.example.mihu.ui.worker.detail.DetailJobWorkerActivity
 
 
 class JobAdapter :
@@ -37,16 +37,17 @@ class JobAdapter :
                 tvWorkerSalary.text = itemView.context.getString(R.string.price_format, data.price)
                 binding.ivAvatar.setImageResource(R.drawable.ic_pp_default)
                 itemView.setOnClickListener {
-                    val intent = Intent(itemView.context, OrderActivity::class.java)
-                    intent.putExtra(OrderActivity.ID_KEY, data._id)
-                    intent.putExtra(OrderActivity.NAME_KEY, data.name)
+                    val intent = Intent(itemView.context, DetailJobWorkerActivity::class.java)
+                    intent.putExtra(DetailJobWorkerActivity.ID_KEY, data._id)
+                    intent.putExtra(DetailJobWorkerActivity.NAME_KEY, data.name)
+                    intent.putExtra(DetailJobWorkerActivity.MESSAGE, data.description)
+                    intent.putExtra(DetailJobWorkerActivity.PRICE, data.price)
 
                     val optionsCompat: ActivityOptionsCompat =
                         ActivityOptionsCompat.makeSceneTransitionAnimation(
                             itemView.context as Activity,
                             Pair(binding.tvWorkerName as View, "name"),
                             Pair(binding.tvWorkerSalary as View, "salary"),
-
                         )
 
                     itemView.context.startActivity(intent, optionsCompat.toBundle())

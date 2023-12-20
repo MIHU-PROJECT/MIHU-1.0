@@ -14,6 +14,8 @@ import com.example.mihu.ui.login.LoginViewModel
 import com.example.mihu.ui.order.OrderViewModel
 import com.example.mihu.ui.profile.ProfileViewModel
 import com.example.mihu.ui.register.RegisterViewModel
+import com.example.mihu.ui.worker.detail.DetailJobWorkerViewModel
+import com.example.mihu.ui.worker.history.HistoryWorkerViewModel
 import com.example.mihu.ui.worker.login.LoginWorkerViewModel
 import com.example.mihu.ui.worker.register.RegisterWorkerViewModel
 import com.example.mihu.ui.worker.task.TaskViewModel
@@ -31,7 +33,7 @@ class ViewModelFactory(
         } else if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(mihuRepository) as T
         } else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
-            return HomeViewModel(mihuRepository) as T
+            return HomeViewModel(mihuRepository, userPreferences) as T
         } else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
             return ProfileViewModel(mihuRepository, userPreferences) as T
         } else if (modelClass.isAssignableFrom(RegisterWorkerViewModel::class.java)) {
@@ -40,6 +42,10 @@ class ViewModelFactory(
             return LoginWorkerViewModel(workerRepository) as T
         } else if (modelClass.isAssignableFrom(TaskViewModel::class.java)) {
             return TaskViewModel(workerRepository, userPreferences) as T
+        } else if (modelClass.isAssignableFrom(DetailJobWorkerViewModel::class.java)) {
+            return DetailJobWorkerViewModel(workerRepository, userPreferences) as T
+        } else if (modelClass.isAssignableFrom(HistoryWorkerViewModel::class.java)) {
+            return HistoryWorkerViewModel(workerRepository, userPreferences) as T
         } else if (modelClass.isAssignableFrom(OrderViewModel::class.java)) {
             return OrderViewModel(mihuRepository, userPreferences) as T
         } else if (modelClass.isAssignableFrom(HistoryViewModel::class.java)) {

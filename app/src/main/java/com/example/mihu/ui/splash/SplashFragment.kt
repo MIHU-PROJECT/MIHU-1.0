@@ -19,12 +19,27 @@ class SplashFragment : Fragment() {
     ): View? {
 
         Handler().postDelayed({
-            if (onBoardingFinished()) {
-                findNavController().navigate(R.id.action_splashFragment_to_homeActivity)
-            } else {
-                findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+
+            when (findNavController().currentDestination?.id) {
+                R.id.homeWorkerActivity -> {
+                    findNavController().navigate(R.id.action_splashFragment_to_homeWorkerActivity)
+                }
+
+                R.id.homeActivity -> {
+                    findNavController().navigate(R.id.action_splashFragment_to_homeActivity)
+                }
+
+                else -> {
+                    // Default navigation if the current destination is unknown
+                    if (onBoardingFinished()) {
+                        findNavController().navigate(R.id.action_splashFragment_to_homeActivity)
+                    } else {
+                        findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
+                    }
+                }
             }
         }, 3000)
+
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_splash, container, false)

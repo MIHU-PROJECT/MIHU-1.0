@@ -19,5 +19,6 @@ data class OrdersItem(
     val description: String,
     val category: String,
     val status: String,
+    val orderId: String,
     val updatedAt: String
 )

@@ -19,6 +19,9 @@
             app:destination="@id/homeActivity"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeWorkerActivity"
+            app:destination="@id/homeWorkerActivity" />
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
@@ -36,4 +39,9 @@
         android:name="com.example.mihu.ui.home.HomeActivity"
         android:label="activity_home"
         tools:layout="@layout/activity_home" />
+    <activity
+        android:id="@+id/homeWorkerActivity"
+        android:name="com.example.mihu.ui.worker.home.HomeWorkerActivity"
+        android:label="activity_home_worker"
+        tools:layout="@layout/activity_home_worker" />
 </navigation>

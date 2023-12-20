@@ -117,4 +117,10 @@
     <string name="avatar">Avatar</string>
     <string name="status">Status</string>
     <string name="price_format">Rp. %d</string>
+    <string name="take_request">Take Request</string>
+    <string name="job_take">Request Taken Successfully!</string>
+    <string name="please_job">Please do it seriously</string>
+    <string name="checkbutton">checkButton</string>
+    <string name="thanks">"Thank You! "</string>
+    <string name="have_a_nice_day">Have A Nice Day With MIHU!</string>
 </resources>

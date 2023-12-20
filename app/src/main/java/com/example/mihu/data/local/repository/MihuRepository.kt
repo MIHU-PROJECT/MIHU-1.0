@@ -35,6 +35,28 @@ class MihuRepository(
             }
         }
 
+    fun completeJob(
+        token: String,
+        id: String
+    ): LiveData<Result<String>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response =
+                    apiService.completeJob(token, id)
+                if (response.error) {
+                    emit(Result.Error("Post Order Error: ${response.message}"))
+                    Log.d("Post Order Error", response.message)
+                } else {
+                    emit(Result.Success("User Created"))
+                    Log.d("Post Order Success", response.message)
+                }
+            } catch (e: Exception) {
+                emit(Result.Error("Error : ${e.message.toString()}"))
+                Log.d("Post Order Exception", e.message.toString())
+            }
+        }
+
     fun getSession() = pref.getSession()
 
     suspend fun logout() {

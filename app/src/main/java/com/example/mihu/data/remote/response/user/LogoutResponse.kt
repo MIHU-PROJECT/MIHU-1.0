@@ -1,5 +1,5 @@
 package com.example.mihu.data.remote.response.user
 
-data class LogoutResponse(
+data class ogoutResponse(
     val message: String,
 )

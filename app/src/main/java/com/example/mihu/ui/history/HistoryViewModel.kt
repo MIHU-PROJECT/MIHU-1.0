@@ -19,4 +19,8 @@ class HistoryViewModel(
     fun getHistory(token: String) =
         mMihuRepository.getHistory(token)
 
+    fun completeJob(token: String, id: String) =
+        mMihuRepository.completeJob(token, id)
+
+
 }

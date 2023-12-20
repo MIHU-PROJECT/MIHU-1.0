@@ -6,7 +6,7 @@ import androidx.lifecycle.liveData
 import com.example.mihu.data.Result
 import com.example.mihu.data.local.pref.UserPreferences
 import com.example.mihu.data.model.UserModel
-import com.example.mihu.data.remote.response.user.HistoryResponse
+import com.example.mihu.data.remote.response.worker.HistoryWorkerResponse
 import com.example.mihu.data.remote.response.worker.JobWorkerResponse
 import com.example.mihu.data.remote.response.worker.LoginWorkerResponse
 import com.example.mihu.data.remote.retrofit.ApiService
@@ -18,10 +18,6 @@ class WorkerRepository(
 
 
     fun getSession() = pref.getSession()
-
-    suspend fun logout() {
-        pref.logout()
-    }
 
     fun registerWorker(
         name: String,
@@ -62,6 +58,48 @@ class WorkerRepository(
             } catch (e: Exception) {
                 emit(Result.Error("Error : ${e.message.toString()}"))
                 Log.d("Categories Exception", e.message.toString())
+            }
+        }
+
+    fun getHistory(
+        token: String
+    ): LiveData<Result<HistoryWorkerResponse>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiService.getHistoryWorker(token)
+                if (response.error) {
+                    emit(Result.Error("Categories Error: ${response.message}"))
+                    Log.d("Categories Error", response.message)
+                } else {
+                    emit(Result.Success(response))
+                    Log.d("Categories Success", response.message)
+                }
+            } catch (e: Exception) {
+                emit(Result.Error("Error : ${e.message.toString()}"))
+                Log.d("Categories Exception", e.message.toString())
+            }
+        }
+
+    fun takeJob(
+        token: String,
+        id: String
+    ): LiveData<Result<String>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response =
+                    apiService.takeJob(token, id)
+                if (response.error) {
+                    emit(Result.Error("Post Order Error: ${response.message}"))
+                    Log.d("Post Order Error", response.message)
+                } else {
+                    emit(Result.Success("User Created"))
+                    Log.d("Post Order Success", response.message)
+                }
+            } catch (e: Exception) {
+                emit(Result.Error("Error : ${e.message.toString()}"))
+                Log.d("Post Order Exception", e.message.toString())
             }
         }
 
