@@ -31,23 +31,6 @@ class HistoryWorkerAdapter :
                 tvStatus.text = data.status
                 tvServicePrice.text = itemView.context.getString(R.string.price_format, data.price)
                 binding.ivAvatar.setImageResource(R.drawable.ic_pp_default)
-                itemView.setOnClickListener {
-//                    val intent = Intent(itemView.context, com.example.mihu.ui.worker.task.com.example.mihu.ui.worker.history.HistoryFragment::class.java)
-//                    intent.putExtra(com.example.mihu.ui.worker.task.com.example.mihu.ui.worker.history.HistoryFragment.category, data.name)
-//                    intent.putExtra(com.example.mihu.ui.worker.task.com.example.mihu.ui.worker.history.HistoryFragment.status, data.status)
-//                    intent.putExtra(com.example.mihu.ui.worker.task.com.example.mihu.ui.worker.history.HistoryFragment.price, data.price)
-//
-//                    val optionsCompat: ActivityOptionsCompat =
-//                        ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                            itemView.context as Activity,
-//                            Pair(binding.tvServiceName as View, "category"),
-//                            Pair(binding.tvStatus as View, "status"),
-//                            Pair(binding.tvServicePrice as View, "price")
-//                        )
-//
-//                    itemView.context.startActivity(intent, optionsCompat.toBundle())
-
-                }
             }
         }
     }

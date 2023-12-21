@@ -18,13 +18,8 @@ class FirstOnboardingFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_first_onboarding, container, false)
 
         val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
-
-        // Find ImageButton by ID
         val btnNext: TextView = view.findViewById(R.id.tv_next)
-
-        // Setting click listener for the ImageButton
         btnNext.setOnClickListener {
-            // Handle button click, for example, navigate to the next fragment
             viewPager?.currentItem = 1
         }
 

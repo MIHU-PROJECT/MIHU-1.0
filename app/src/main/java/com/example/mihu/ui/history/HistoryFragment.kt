@@ -39,7 +39,7 @@ class HistoryFragment : Fragment(), HistoryAdapter.HistoryItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentHistoryBinding.bind(view)
-        adapter = HistoryAdapter(this) // Pass the fragment as the click listener
+        adapter = HistoryAdapter(this)
 
         historyViewModel.token.observe(viewLifecycleOwner) { token ->
             loadHistory(token)
@@ -111,7 +111,5 @@ class HistoryFragment : Fragment(), HistoryAdapter.HistoryItemClickListener {
     }
 
 
-    companion object {
-        const val ID_KEY = "category_id"
-    }
+    companion object
 }

@@ -3,22 +3,20 @@ package com.example.mihu.ui.splash
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mihu.R
 import com.example.mihu.ui.ViewModelFactory
-import com.example.mihu.ui.home.HomeViewModel
 
 @Suppress("DEPRECATION")
 class SplashFragment : Fragment() {
     private val splashViewModel: SplashViewModel by viewModels {
         ViewModelFactory.getInstance(requireContext())
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,8 +49,6 @@ class SplashFragment : Fragment() {
             }
         }, 3000)
 
-
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 

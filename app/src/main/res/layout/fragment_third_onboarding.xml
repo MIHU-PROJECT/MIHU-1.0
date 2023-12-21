@@ -18,11 +18,13 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="10dp"
         android:contentDescription="@string/cd_onboarding_1"
-        android:src="@drawable/ic_done_3d" />
+        android:src="@drawable/ic_done_3d"
+        tools:ignore="ImageContrastCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"
-        style="@style/OnBoardingDescBG">
+        style="@style/OnBoardingDescBG"
+        tools:ignore="TextSizeCheck">
 
         <ImageView
             android:id="@+id/iv_indicator_1"
@@ -31,7 +33,8 @@
             android:contentDescription="@string/cd_indicator_1_disable"
             android:src="@drawable/onboarding_disable_indicator"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
         <ImageView
             android:id="@+id/iv_indicator_2"
@@ -41,7 +44,8 @@
             android:contentDescription="@string/cd_indicator_2_disable"
             android:src="@drawable/onboarding_disable_indicator"
             app:layout_constraintStart_toEndOf="@id/iv_indicator_1"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
         <ImageView
             android:id="@+id/iv_indicator_4"
@@ -76,7 +80,8 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_start"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:ignore="VisualLintLongText" />
 
         <TextView
             android:id="@+id/tv_start"

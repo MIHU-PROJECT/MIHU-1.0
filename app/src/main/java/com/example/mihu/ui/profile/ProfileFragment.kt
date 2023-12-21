@@ -12,7 +12,6 @@ import com.example.mihu.R
 import com.example.mihu.databinding.FragmentProfileBinding
 import com.example.mihu.ui.ViewModelFactory
 import com.example.mihu.ui.login.LoginActivity
-import com.example.mihu.utils.loadImage
 import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
@@ -26,7 +25,6 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }

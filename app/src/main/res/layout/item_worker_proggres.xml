@@ -27,6 +27,7 @@
             android:textStyle="bold"
             card_view:layout_constraintStart_toEndOf="@+id/ivAvatar"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_salary"
+            tools:ignore="TextContrastCheck"
             tools:text="@string/status" />
 
         <ImageView
@@ -37,6 +38,7 @@
             android:paddingTop="8dp"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,ImageContrastCheck"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -64,15 +66,16 @@
 
         <ImageButton
             android:id="@+id/ib_check"
-            android:src="@drawable/baseline_check_24"
-            android:background="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
+            android:background="@color/white"
+            android:contentDescription="@string/checkbutton"
+            android:src="@drawable/baseline_check_24"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/checkbutton" />
+            tools:ignore="ImageContrastCheck,TouchTargetSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

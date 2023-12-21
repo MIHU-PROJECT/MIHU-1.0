@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.mihu.R
 import com.example.mihu.databinding.FragmentProfileBinding
 import com.example.mihu.ui.ViewModelFactory
-import com.example.mihu.ui.login.LoginActivity
 import com.example.mihu.ui.profile.ProfileViewModel
 import com.example.mihu.ui.worker.login.LoginWorkerActivity
 import kotlinx.coroutines.launch
@@ -27,15 +26,12 @@ class ProfileWorkerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Initialize views and set up any additional logic here
         setupProfileInfo()
         setupClickListeners()
     }
@@ -52,7 +48,6 @@ class ProfileWorkerFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        // Set up click listeners for profile actions (e.g., log out)
         binding.tvLogOut.setOnClickListener {
             lifecycleScope.launch {
                 viewModel.logout()
@@ -60,8 +55,5 @@ class ProfileWorkerFragment : Fragment() {
             startActivity(Intent(requireContext(), LoginWorkerActivity::class.java))
             requireActivity().finish()
         }
-
-        // Add click listeners for other actions if needed
-        // ...
     }
 }

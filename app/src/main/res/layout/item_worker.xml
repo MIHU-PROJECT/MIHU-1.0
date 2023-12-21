@@ -21,12 +21,11 @@
             android:id="@+id/ivAvatar"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:contentDescription="Avatar"
+            android:contentDescription="@string/avatarz"
             android:paddingTop="8dp"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp"
+            tools:ignore="ImageContrastCheck"
             tools:src="@tools:sample/avatars" />
 
         <TextView

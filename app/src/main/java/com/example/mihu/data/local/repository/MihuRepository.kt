@@ -64,24 +64,6 @@ class MihuRepository(
         pref.logout()
     }
 
-//    fun predictCategory(sentencecs: String): LiveData<Result<PredictionsResponse>> =
-//        liveData {
-//            emit(Result.Loading)
-//            try {
-//                val response = apiService.predictCategory(sentencecs)
-//                if (response.error) {
-//                    emit(Result.Error("Predict Error: ${response.message}"))
-//                    Log.e("Predict Error", response.message)
-//                } else {
-//                    emit(Result.Success(response))
-//                    Log.d("Predict Success", response.message)
-//                }
-//            } catch (e: Exception) {
-//                emit(Result.Error("Error: ${e.message.toString()}"))
-//                Log.e("Predict Exception", e.message.toString())
-//            }
-//        }
-
     fun getHistory(
         token: String
     ): LiveData<Result<HistoryResponse>> =

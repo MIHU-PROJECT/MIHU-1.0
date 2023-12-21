@@ -123,4 +123,6 @@
     <string name="checkbutton">checkButton</string>
     <string name="thanks">"Thank You! "</string>
     <string name="have_a_nice_day">Have A Nice Day With MIHU!</string>
+    <string name="string_iv_photo">string/iv_photo</string>
+    <string name="avatarz">Avatar</string>
 </resources>

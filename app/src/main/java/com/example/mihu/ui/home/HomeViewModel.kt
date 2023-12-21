@@ -33,7 +33,6 @@ class HomeViewModel(
     val result: LiveData<List<Prediction>> = _result
 
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
 
     fun searchUsers(query: String) {
         if (query.isEmpty()) return
