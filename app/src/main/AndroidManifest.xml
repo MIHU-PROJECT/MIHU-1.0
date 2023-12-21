@@ -33,18 +33,6 @@
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HistoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".WorkerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OrderHistory"
-            android:exported="false" />
-        <activity
             android:name=".ui.nav.BottomNavigation"
             android:exported="false"
             android:label="@string/title_activity_bottom_navigatian" />

@@ -12,6 +12,7 @@ import com.example.mihu.data.remote.response.worker.JobWorkerResponse
 import com.example.mihu.data.remote.response.worker.LoginWorkerResponse
 import com.example.mihu.data.remote.response.worker.RegisterWorkerResponse
 import com.example.mihu.data.remote.response.worker.TakeJobResponse
+import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -97,8 +98,8 @@ interface ApiService {
     ): HistoryWorkerResponse
 
     @GET("/predict")
-    suspend fun predictCategory(
+    fun predictCategory(
         @Query("sentences") sentences: String
-    ): PredictionsResponse
+    ): Call<PredictionsResponse>
 
 }

@@ -55,14 +55,22 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-//        with(binding) {
-//            searchView.setupWithSearchBar(searchBar)
-//            searchView.editText.setOnEditorActionListener { _, _, _ ->
-//                homeViewModel.predictCategory(searchView.text.toString())
-//                searchBar.text = searchView.text
-//                searchView.text.isEmpty()
-//            }
-//        }
+        with(binding) {
+            rvUserSearch.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = searchAdapter
+            }
+            searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener { _, _, _ ->
+                    homeViewModel.searchUsers(searchView.text.toString())
+                    false
+                }
+        }
+        homeViewModel.result.observe(viewLifecycleOwner) { predictions ->
+            searchAdapter.submitList(predictions)
+        }
 
     }
 
@@ -88,3 +96,4 @@ class HomeFragment : Fragment() {
         binding.progressBar.isVisible = state
     }
 }
+

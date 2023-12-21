@@ -125,6 +125,7 @@ class WorkerRepository(
                             response.data.username,
                             response.data.email,
                             response.data.accessToken,
+                            response.data.role,
                             true
                         )
                     )

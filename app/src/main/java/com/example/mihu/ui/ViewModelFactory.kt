@@ -14,6 +14,7 @@ import com.example.mihu.ui.login.LoginViewModel
 import com.example.mihu.ui.order.OrderViewModel
 import com.example.mihu.ui.profile.ProfileViewModel
 import com.example.mihu.ui.register.RegisterViewModel
+import com.example.mihu.ui.splash.SplashViewModel
 import com.example.mihu.ui.worker.detail.DetailJobWorkerViewModel
 import com.example.mihu.ui.worker.history.HistoryWorkerViewModel
 import com.example.mihu.ui.worker.login.LoginWorkerViewModel
@@ -32,6 +33,8 @@ class ViewModelFactory(
             return RegisterViewModel(mihuRepository) as T
         } else if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(mihuRepository) as T
+        } else if (modelClass.isAssignableFrom(SplashViewModel::class.java)) {
+            return SplashViewModel(mihuRepository) as T
         } else if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             return HomeViewModel(mihuRepository, userPreferences) as T
         } else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {

@@ -7,11 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mihu.R
+import com.example.mihu.ui.ViewModelFactory
+import com.example.mihu.ui.home.HomeViewModel
 
 @Suppress("DEPRECATION")
 class SplashFragment : Fragment() {
+    private val splashViewModel: SplashViewModel by viewModels {
+        ViewModelFactory.getInstance(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,9 +36,14 @@ class SplashFragment : Fragment() {
                 }
 
                 else -> {
-                    // Default navigation if the current destination is unknown
                     if (onBoardingFinished()) {
-                        findNavController().navigate(R.id.action_splashFragment_to_homeActivity)
+                        splashViewModel.getSessionData().observe(viewLifecycleOwner) { user ->
+                            if (user.role == "worker") {
+                                findNavController().navigate(R.id.action_splashFragment_to_homeWorkerActivity)
+                            } else {
+                                findNavController().navigate(R.id.action_splashFragment_to_homeActivity)
+                            }
+                        }
                     } else {
                         findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
                     }

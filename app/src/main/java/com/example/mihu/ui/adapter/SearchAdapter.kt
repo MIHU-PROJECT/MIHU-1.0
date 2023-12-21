@@ -17,19 +17,19 @@ import com.example.mihu.utils.loadImage
 
 
 class SearchAdapter :
-    ListAdapter<Prediction, SearchAdapter.JobViewHolder>(SearchPredict()) {
+    ListAdapter<Prediction, SearchAdapter.SearchViewHolder>(SearchPredict()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val binding =
             ItemServicesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return JobViewHolder(binding)
+        return SearchViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: JobViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class JobViewHolder(private val binding: ItemServicesBinding) :
+    class SearchViewHolder(private val binding: ItemServicesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Prediction) {
             binding.apply {
