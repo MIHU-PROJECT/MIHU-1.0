@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = CategoriesAdapter()
-        searchAdapter = SearchAdapter()
+        searchAdapter = SearchAdapter(requireActivity())
 
         homeViewModel.getSessionData().observe(viewLifecycleOwner) { user ->
             if (!user.isLogin) {

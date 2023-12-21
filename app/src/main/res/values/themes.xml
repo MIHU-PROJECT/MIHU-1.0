@@ -1,8 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MIHU" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.MIHU" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="android:statusBarColor">@color/grey</item>
         <item name="fontFamily">@font/mulish</item>
     </style>
 
@@ -11,6 +13,10 @@
     <style name="Theme.MIHU.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/grey</item>
     </style>
 
     <style name="Theme.MIHU.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

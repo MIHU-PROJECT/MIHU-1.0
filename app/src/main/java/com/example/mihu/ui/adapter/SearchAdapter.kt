@@ -16,7 +16,7 @@ import com.example.mihu.ui.order.OrderActivity
 import com.example.mihu.utils.loadImage
 
 
-class SearchAdapter :
+class SearchAdapter(val activity: Activity) :
     ListAdapter<Prediction, SearchAdapter.SearchViewHolder>(SearchPredict()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
@@ -29,7 +29,7 @@ class SearchAdapter :
         holder.bind(getItem(position))
     }
 
-    class SearchViewHolder(private val binding: ItemServicesBinding) :
+    inner class SearchViewHolder(private val binding: ItemServicesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Prediction) {
             binding.apply {
@@ -43,7 +43,7 @@ class SearchAdapter :
 
                     val optionsCompat: ActivityOptionsCompat =
                         ActivityOptionsCompat.makeSceneTransitionAnimation(
-                            itemView.context as Activity,
+                            activity,
                             Pair(binding.tvItemName as View, "name"),
                             Pair(binding.ivAvatar as View, "photo")
                         )
