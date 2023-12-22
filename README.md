@@ -10,7 +10,7 @@ In mobile development, applications for recruiters and workers follow the MVVM a
 
 <img src="https://github.com/MIHU-PROJECT/MIHU-1.0/blob/5e68537492987548098bd220d1f5bda0ae674348/app/src/main/res/drawable/mihu_user_2.png" width="1000"/>
 
-### Relasia Worker Role
+### MIHU Worker Role
 <img src="https://github.com/MIHU-PROJECT/MIHU-1.0/blob/5e68537492987548098bd220d1f5bda0ae674348/app/src/main/res/drawable/mihu_worker_1.png" width="1000"/>
 
 <img src="https://github.com/MIHU-PROJECT/MIHU-1.0/blob/5e68537492987548098bd220d1f5bda0ae674348/app/src/main/res/drawable/mihu_worker_2.png" width="1000"/>
